@@ -1,0 +1,1 @@
+var tipuesearch = {"pages": [{'title': 'MDE', 'text': '廖璟程40823124 \n \n youtube \n github \n \n \n', 'tags': '', 'url': 'MDE.html'}, {'title': 'HomeWork', 'text': '', 'tags': '', 'url': 'HomeWork.html'}, {'title': 'w1', 'text': 'w1', 'tags': '', 'url': 'w1.html'}]};
