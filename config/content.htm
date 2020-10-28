@@ -31,6 +31,54 @@
 <p>What is API</p>
 <p><img src="https://www.redhat.com/cms/managed-files/what-are-apis-370x226_0.png"/></p>
 <p>API是指應用程式介面，在網頁和程式中扮演介面和資料庫的橋樑，當點擊連結後將資料從資料庫中回傳至使用者介面中供使用者觀看。</p>
+<h2>第六周</h2>
+<p>利用inventor內建API"iLogic"功能，使用基礎迴圈遞增多種尺寸以快速建立模型</p>
+<p><img alt="" height="600" src="/images/api.gif" width="900"/></p>
+<p>以c#編寫</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">//40823124編寫
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+int s=0;//形式 
+int i;
+int start = 1;
+int end;//遞增64次
+int L,W,H;//基礎長寬高 
+int l2,w2,h2;//增加值 
+int d3 = 0;
+int d12 =10;
+int main(void){
+	printf("輸入初始長度\n");
+		scanf("%d",&amp;L);
+	printf("輸入初始寬度\n");
+		scanf("%d",&amp;W);
+	printf("輸入初始高度\n");
+		scanf("%d",&amp;H);
+	printf("輸入長度增值\n");
+		scanf("%d",&amp;l2);
+	printf("輸入寬度增值\n");
+		scanf("%d",&amp;w2);
+	printf("輸入高度增值\n");
+		scanf("%d",&amp;h2);
+	printf("輸入遞增次數\n");
+		scanf("%d",&amp;end);
+		printf("列印:\n");
+	//printf("If Style = %d Then \n Leight = %d \n Width = %d \n Height = %d \n d3 = %d \n d11 = %d \n volume = iProperties.Volume \n Volume = volume \n Parameter.UpdateAfterChange = True \n End If \n",s,L,W,H,d3,d12); //列印inventor可支援語言 
+  
+  for(i=1;i &lt;= end ;i++){ //使用迴圈遞增64次
+    L=L+l2;//每次增加
+    W=W+w2;//每次增加
+    H=H+h2;//每次增加
+    s=s+1;//每次增加
+    d3=d3+0;//不變
+    printf("If Style = %d Then \n Leight = %d \n Width = %d \n Height = %d \n d3 = %d \n d11 = %d \n volume = iProperties.Volume \n Volume = volume \n Parameter.UpdateAfterChange = True \n End If \n",s,L,W,H,d3,d12); //列印inventor可支援語言 
+  }
+  printf("點擊以結束\n");
+  system("pause");
+  return 0;//返回
+  
+}
+</stdlib.h></math.h></stdio.h></pre>
 <h1>HomeWork</h1>
 <p>每次課堂作業</p>
 <h2>第1周</h2>
@@ -43,4 +91,52 @@
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/cL8RSB-dvxU" width="560"></iframe></p>
 <p>NX12更新後統一稱為NX，不是NX13。<br/> 使用者UI有多種可更換<br/> 更加合適的解析度<br/> 取消 增強功能*<br/> 零組件可以設定密碼保護</p>
 <h1>程式</h1>
+<h2>inventor iLogic in Dart</h2>
 <p><iframe height="600" src="https://mde.tw/dartpad/?id=5e9c8acde3c42f620d2e610664815049" width="800"></iframe></p>
+<h2>inventor iLogic in C#</h2>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">//40823124編寫
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+int s=0;//形式 
+int i;
+int start = 1;
+int end;//遞增64次
+int L,W,H;//基礎長寬高 
+int l2,w2,h2;//增加值 
+int d3 = 0;
+int d12 =10;
+int main(void){
+	printf("輸入初始長度\n");
+		scanf("%d",&amp;L);
+	printf("輸入初始寬度\n");
+		scanf("%d",&amp;W);
+	printf("輸入初始高度\n");
+		scanf("%d",&amp;H);
+	printf("輸入長度增值\n");
+		scanf("%d",&amp;l2);
+	printf("輸入寬度增值\n");
+		scanf("%d",&amp;w2);
+	printf("輸入高度增值\n");
+		scanf("%d",&amp;h2);
+	printf("輸入遞增次數\n");
+		scanf("%d",&amp;end);
+		printf("列印:\n");
+	//printf("If Style = %d Then \n Leight = %d \n Width = %d \n Height = %d \n d3 = %d \n d11 = %d \n volume = iProperties.Volume \n Volume = volume \n Parameter.UpdateAfterChange = True \n End If \n",s,L,W,H,d3,d12); //列印inventor可支援語言 
+  
+  for(i=1;i &lt;= end ;i++){ //使用迴圈遞增64次
+    L=L+l2;//每次增加
+    W=W+w2;//每次增加
+    H=H+h2;//每次增加
+    s=s+1;//每次增加
+    d3=d3+0;//不變
+    printf("If Style = %d Then \n Leight = %d \n Width = %d \n Height = %d \n d3 = %d \n d11 = %d \n volume = iProperties.Volume \n Volume = volume \n Parameter.UpdateAfterChange = True \n End If \n",s,L,W,H,d3,d12); //列印inventor可支援語言 
+  }
+  printf("點擊以結束\n");
+  system("pause");
+  return 0;//返回
+  
+}
+</stdlib.h></math.h></stdio.h></pre>
+<p>執行</p>
+<p><img alt="" height="474" src="/images/iLogic執行.jpg" width="900"/></p>
