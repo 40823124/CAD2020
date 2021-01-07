@@ -200,7 +200,66 @@ end
 </pre>
 <h2>第十五周</h2>
 <p>揮棒測試</p>
-<p><br/><img alt="" height="950" src="/images/球棒測試.gif" width="1756"/></p><h1>HomeWork</h1>
+<p><br/><img alt="" height="950" src="/images/球棒測試.gif" width="1756"/></p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">threadFunction=function()
+    while sim.getSimulationState()~=sim.simulation_advancing_abouttostop do
+        -- Read the keyboard messages (make sure the focus is on the main window, scene view):
+        message,auxiliaryData=sim.getSimulatorMessage()
+        while message~=-1 do
+            if (message==sim.message_keypress) then
+                if (auxiliaryData[1]==119) then
+                    -- W key
+                    velocity=1
+                    torque=2
+                    hammer_back = -1
+                end
+                if (auxiliaryData[1]==115) then
+                    -- S key
+                     hammer_back = 1
+                     torque=-1
+                     velocity = -0.5
+                end
+               
+            end
+            message,auxiliaryData=sim.getSimulatorMessage()
+        end
+ 
+        -- We take care of setting the desired bat position:
+        if hammer_back == 1
+            then 
+               sim.setJointPosition(joint, -1, orientation)
+               --sim.setObjectPosition(hammer,-1, position)
+        end
+        if hammer_back == -1
+            then 
+               sim.setJointPosition(joint, 1, orientation)
+               --sim.setObjectPosition(hammer,-1, position)
+        end
+        sim.setJointTargetPosition(joint, velocity)
+        --sim.setJointForce(joint,torque)
+        
+        -- Since this script is threaded, don't waste time here:
+        sim.switchThread() -- Resume the script at next simulation loop start
+    end
+end
+-- Put some initialization code here:
+-- Retrieving of some handles and setting of some initial values:
+joint=sim.getObjectHandle('joint1')
+hammer=sim.getObjectHandle('bat1')
+velocity=0
+hammer_back=0
+torque=0
+orientation=sim.getJointPosition(joint, -1)
+position=sim.getObjectPosition(hammer,-1)
+-- Here we execute the regular thread code:
+res,err=xpcall(threadFunction,function(err) return debug.traceback(err) end)
+if not res then
+    sim.addStatusbarMessage('Lua runtime error: '..err)
+end
+ 
+-- Put some clean-up code here:
+</pre>
+<h1>HomeWork</h1>
 <p>每次課堂作業</p>
 <h2>第1周</h2>
 <p>體積試算表</p>
@@ -210,7 +269,7 @@ end
 <h2>第4周</h2>
 <p>NX更新心得</p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/cL8RSB-dvxU" width="560"></iframe></p>
-<p>NX12更新後統一稱為NX，不是NX13<br/> 使用者UI有多種可更換<br/> 更加合適的解析度<br/> 取消 增強功能*<br> 零組件可以設定密碼保護</br></p>
+<p>NX12更新後統一稱為NX，不是NX13<br/> 使用者UI有多種可更換<br/> 更加合適的解析度<br/> 取消 增強功能*<br/> 零組件可以設定密碼保護</p>
 <h1>程式</h1>
 <h2>inventor iLogic in Dart</h2>
 <p><iframe height="600" src="https://mde.tw/dartpad/?id=5e9c8acde3c42f620d2e610664815049" width="800"></iframe></p>
