@@ -259,6 +259,54 @@ end
  
 -- Put some clean-up code here:
 </pre>
+<h2>第17周</h2>
+<h2>第十七周</h2>
+<p>新增投球機構，轉向功能未完成，打擊功能尚未完善</p>
+<p><img alt="" height="950" src="/images/打擊.gif" width="1756"/></p>
+<p>打擊程式</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">threadFunction=function()
+    while sim.getSimulationState()~=sim.simulation_advancing_abouttostop do
+        -- Read the keyboard messages (make sure the focus is on the main window, scene view):
+        message,auxiliaryData=sim.getSimulatorMessage()
+        while message~=-1 do
+            if (message==sim.message_keypress) then
+                if (auxiliaryData[1]==2007) then
+                    -- up key
+                    velocity=2
+                    hammer_back = 0
+                end
+                if (auxiliaryData[1]==2008) then
+                    -- down key
+                     hammer_back = 1
+                     velocity = -2
+                end
+            end
+            message,auxiliaryData=sim.getSimulatorMessage()
+        end
+ 
+        -- We take care of setting the desired hammer position:
+        if hammer_back == 1
+            then sim.setObjectPosition(hammer,-1, position)
+        end
+        sim.setJointTargetVelocity(joint,velocity)
+ 
+        -- Since this script is threaded, don't waste time here:
+        sim.switchThread() -- Resume the script at next simulation loop start
+    end
+end
+-- Put some initialization code here:
+-- Retrieving of some handles and setting of some initial values:
+joint=sim.getObjectHandle('joint')
+hammer=sim.getObjectHandle('hammer')
+velocity=0
+hammer_back=0
+position=sim.getObjectPosition(hammer,-1)
+ 
+-- Here we execute the regular thread code:
+res,err=xpcall(threadFunction,function(err) return debug.traceback(err) end)
+if not res then
+    sim.addStatusbarMessage('Lua runtime error: '..err)
+end</pre>
 <h1>HomeWork</h1>
 <p>每次課堂作業</p>
 <h2>第1周</h2>
@@ -273,7 +321,7 @@ end
 <h1>程式</h1>
 <h2>以Dart編寫 inventor iLogic</h2>
 <p><iframe height="600" src="https://mde.tw/dartpad/?id=5e9c8acde3c42f620d2e610664815049" width="800"></iframe></p>
-<p>以C#編寫 inventor iLogic</p>
+<p>以Ansi C編寫 inventor iLogic</p>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">//40823124編寫
 #include <stdio.h>
 #include <math.h>
@@ -314,8 +362,7 @@ int main(void){
   system("pause");
   return 0;//返回
   
-}
-</stdlib.h></math.h></stdio.h></pre>
+}</stdlib.h></math.h></stdio.h></pre>
 <p>執行</p>
 <p><img alt="" height="474" src="/images/iLogic執行.jpg" width="900"/></p>
 <h1>錯誤和除錯</h1>
